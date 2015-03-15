@@ -8,6 +8,17 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+var MongoClient = require('mongodb').MongoClient
+
+MongoClient.connect("mongodb://localhost:27017/striker", function(err, db) {
+  if(err) { return console.dir(err); }
+  else {
+    console.log("connection successful!")
+    db.close()
+  }
+});
+
+
 var app = express();
 
 // view engine setup
