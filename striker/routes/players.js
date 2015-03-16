@@ -4,13 +4,12 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/:id', function(req, res, next) {
-  var tid = req.params.id;
-  console.log(tid)
+  var tid = parseInt(req.params.id);
   var dbq = MongoClient.connect("mongodb://localhost:27017/epldb", function(err, db) {
 	if(err) { return next(err); }
 		var gcollect = db.collection('testData');
-		var qresult = gcollect.find({'tid': tid }).toArray(function(err,docs) {
-			res.send(docs[0]);
+		var qresult = gcollect.find({'tid': tid }).nextObject(function(err,doc) {
+			res.send(JSON.stringify(doc));
 			db.close();
 		});
 	});

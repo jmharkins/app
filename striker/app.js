@@ -11,13 +11,13 @@ var players = require('./routes/players');
 var MongoClient = require('mongodb').MongoClient
 
 // establish mongoconnect
-MongoClient.connect("mongodb://localhost:27017/striker", function(err, db) {
-  if(err) { return console.dir(err); }
-  else {
-    console.log("connection successful!")
-    //db.close()
-  }
-});
+// MongoClient.connect("mongodb://localhost:27017/striker", function(err, db) {
+//   if(err) { return console.dir(err); }
+//   else {
+//     console.log("connection successful!")
+//     //db.close()
+//   }
+// });
 
 
 var app = express();
