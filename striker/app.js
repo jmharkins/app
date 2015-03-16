@@ -6,15 +6,16 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var players = require('./routes/players');
 
 var MongoClient = require('mongodb').MongoClient
 
+// establish mongoconnect
 MongoClient.connect("mongodb://localhost:27017/striker", function(err, db) {
   if(err) { return console.dir(err); }
   else {
     console.log("connection successful!")
-    db.close()
+    //db.close()
   }
 });
 
@@ -34,7 +35,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
+app.use('/players', players);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
