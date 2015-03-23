@@ -16,7 +16,7 @@ var yScale = d3.scale.linear()
  .range([h - padding, padding]);
 
 var color = d3.scale.quantile()
-    .range(colorbrewer.Blues[9])
+    .range(colorbrewer.RdYlGn[5].reverse())
     // .interpolate(d3.interpolateLab);
 
 var radius = d3.scale.sqrt()
@@ -24,10 +24,13 @@ var radius = d3.scale.sqrt()
 
 var cradius = d3.scale.sqrt()
     .range([0,12])
-
-d3.json("allshots.json", function(error, data){
+d3.json("lgavgs.json", function(error, lgavgs){
+      if(error) {
+        console.log("error loading lg avgs data")
+    } else {
+d3.json("arsshots2.json", function(error, data){
     if(error) {
-        console.log("error loading data")
+        console.log("error loading player data")
     } else {
 
         //Create SVG element
@@ -67,13 +70,16 @@ d3.json("allshots.json", function(error, data){
               gc++
             }
           });
-          bin.ot_rate = (ot / n) ;
+          var avgrate = lgavgs.filter(function(a) { return bin.x === a.x && bin.y === a.y})
+          bin.ot_rate = (ot / n);
+          bin.adj_rate =  (ot / n) - avgrate[0].ot_rate
           bin.goalcount = gc;
           return bin;
         });
-        color.domain(hexdata.map(function(h) { return h.ot_rate }))
-        radius.domain([1, d3.max(hexdata, function(h) { return h.length})])
-        cradius.domain([0, d3.max(hexdata, function(h) { return h.goalcount})])         
+        console.log(hexdata)
+        color.domain([-0.25, -0.10, 0.10, 0.25])
+        radius.domain([1, 30])
+        cradius.domain([0, d3.max(hexdata, function(h) { return h.goalcount})])      
         // // add hexbins    
 
         svg.append("g")
@@ -84,7 +90,7 @@ d3.json("allshots.json", function(error, data){
             .attr("class", "hexagon")
             .attr("d", function(d) { return hexbin.hexagon(radius(d.length)) } )
             .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
-            .style("fill", function(d) { return color(d.ot_rate); });                     
+            .style("fill", function(d) { return color(d.adj_rate); });                     
 
         // svg.append("g")
         //    .selectAll("goalcircle")
@@ -143,4 +149,6 @@ d3.json("allshots.json", function(error, data){
                    .attr("stroke", "black");
   
     }
+})
+}
 })
