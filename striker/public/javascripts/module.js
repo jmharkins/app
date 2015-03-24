@@ -1,4 +1,13 @@
-var stkApp = angular.module('stkApp', [])
+var stkApp = angular.module('stkApp', ['ngRoute'])
+
+stkApp.config(['$routeProvider', function($routeProvider) {
+	console.log("config") ; 
+	$routeProvider
+		.when('/player/:id', {
+			templateUrl: 'partials/player',
+			controller: 'stkControl'
+		});
+}]);
 
 stkApp.directive('shotChart', function(){
 	return { restrict: 'E',

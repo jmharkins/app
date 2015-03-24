@@ -1,6 +1,6 @@
 var stkApp = angular.module('stkApp', ['ngRoute'])
 
-stkApp.confid(['$routeProvider', function($routeProvider) {
+stkApp.config(['$routeProvider', function($routeProvider) {
 	$routeProvider
 		.when('/player/:id', {
 			templateUrl: 'player.html',
