@@ -22,8 +22,14 @@ fill: none;
 </style>
 </head>
 <body ng-app="stkApp">
-<div ng-controller='stkControl'>
-	<shot-chart idata='chartData' lgavgs='lgavgs'>
+<div>
+	<h3>TITLE</h3>
 </div>
+<script type="ng-template" id="/player.html">
+	<h4>{{params.id}}</h4>
+	<div ng-controller='stkControl'>
+		<shot-chart idata='chartData' lgavgs='lgavgs'>
+	</div>
+</script>
 </body>
 </html>

@@ -6,4 +6,8 @@ router.get('/', function(req, res, next) {
   res.render('chart.html');
 });
 
+router.get('/player/:id', function(req, res, next) {
+  res.render('chart.html');
+});
+
 module.exports = router;
