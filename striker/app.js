@@ -36,11 +36,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes.index);
-app.use('/player', routes.player)
+app.use('/', routes);
+app.use('/player', routes)
 app.use('/players', players);
 
-app.use('/partials/:name', routes.partials);
+app.use('/partials/:name', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
