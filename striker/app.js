@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-var players = require('./routes/players');
+var apiroute = require('./routes/players');
 
 var MongoClient = require('mongodb').MongoClient
 
@@ -38,7 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/player', routes)
-app.use('/players', players);
+app.use('/api', apiroute);
 
 app.use('/partials/:name', routes);
 
