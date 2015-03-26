@@ -3,6 +3,9 @@ var stkApp = angular.module('stkApp', ['ngRoute'])
 stkApp.config(['$routeProvider', function($routeProvider) {
 	console.log("config") ; 
 	$routeProvider
+		.when('/', {
+			controller: 'mainControl'
+		})
 		.when('/player/:id', {
 			templateUrl: 'partials/player',
 			controller: 'stkControl'
