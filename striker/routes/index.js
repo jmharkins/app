@@ -12,6 +12,11 @@ router.get('/player/:id', function(req, res, next) {
   res.render('partials/player.jade')
 });
 
+router.get('/team/:id', function(req, res, next) {
+  // res.render('chart.html');
+  res.render('partials/team.jade')
+});
+
 router.get('/partials/:name', function (req, res) {
   console.log("partial requested")
   var name = req.params.name;

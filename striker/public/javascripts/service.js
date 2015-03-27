@@ -7,3 +7,13 @@ stkApp.factory('playerShots', function ($http) {
 
     }
 });
+
+stkApp.factory('teamShots', function ($http) { 
+    return function (id){
+         return $http({
+            method: 'GET',
+            url: 'api/team/' + id
+         });
+
+    }
+});

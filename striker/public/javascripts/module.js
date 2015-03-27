@@ -8,7 +8,11 @@ stkApp.config(['$routeProvider', function($routeProvider) {
 		})
 		.when('/player/:id', {
 			templateUrl: 'partials/player',
-			controller: 'stkControl'
+			controller: 'playControl'
+		})
+		.when('/team/:id', {
+			templateUrl: 'partials/team',
+			controller: 'teamControl'
 		});
 }]);
 
@@ -71,6 +75,7 @@ stkApp.directive('shotChart', function(){
 
 
 				scope.$watchCollection('idata()', function(newData, oldData) {
+					console.log(newData)
 				        // bin dataset               
 				        var hexdata = hexbin(newData);  
 				        // color.domain(hexdata.map(function(h) { return h.length}))
