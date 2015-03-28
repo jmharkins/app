@@ -75,7 +75,6 @@ stkApp.directive('shotChart', function(){
 
 
 				scope.$watchCollection('idata()', function(newData, oldData) {
-					console.log(newData)
 				        // bin dataset               
 				        var hexdata = hexbin(newData);  
 				        // color.domain(hexdata.map(function(h) { return h.length}))
@@ -97,6 +96,7 @@ stkApp.directive('shotChart', function(){
 						  bin.goalcount = gc;
 						  return bin;
 						});
+						console.log(hexdata)
 						color.domain([-0.25, -0.10, 0.10, 0.25])
 						radius.domain([1, 30])
 						// cradius.domain([0, d3.max(hexdata, function(h) { return h.goalcount})])         
@@ -110,7 +110,7 @@ stkApp.directive('shotChart', function(){
 				            .attr("class", "hexagon")
 				            .attr("d", function(d) { return hexbin.hexagon(radius(d.length)) } )
 				            .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
-				            .style("fill", function(d) { return color(d.ot_rate); });                     
+				            .style("fill", function(d) { return color(d.adj_rate); });                     
 
 				        // svg.append("g")
 				        //    .selectAll("goalcircle")
