@@ -9,6 +9,7 @@ head
     script(type='text/javascript', src='/javascripts/module.js')
     script(type='text/javascript', src='/javascripts/service.js')
     script(type='text/javascript', src='/javascripts/controller.js')
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css")
     style(type='text/css').
       .hexagon {
       stroke: #000;
@@ -20,9 +21,10 @@ head
       fill: none;
       }
   body(ng-app='stkApp')
-    div
-      a(href='#/player/897')
-        h3 PLAYER
-      a(href='#/team/34')
-        h3 TEAM
-    div(ng-view)
+    div(class='container')
+      div(class='row')
+        a(href='#/player/897')
+          h3 PLAYER
+        a(href='#/team/34')
+          h3 TEAM
+        div(ng-view)

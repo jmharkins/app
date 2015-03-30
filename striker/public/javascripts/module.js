@@ -96,7 +96,6 @@ stkApp.directive('shotChart', function(){
 						  bin.goalcount = gc;
 						  return bin;
 						});
-						console.log(hexdata)
 						color.domain([-0.25, -0.10, 0.10, 0.25])
 						radius.domain([1, 30])
 						// cradius.domain([0, d3.max(hexdata, function(h) { return h.goalcount})])         
