@@ -1,2 +1,6 @@
-div(ng-controller='mainControl')
-	h4 Main Page
+div(ng-controller='mainControl' class='row top-buffer')
+	div(class='col-md-4')
+		select(class='form-control')
+			option(ng-repeat='team in teams')
+				{{team}}
+	

@@ -1,8 +1,13 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.top-buffer {
+	margin-top: 20px;
 }
 
-a {
-  color: #00B7FF;
+.hexagon {
+	stroke: #000;
+	stroke-width: 1px;
+}
+.goalcircle {
+	stroke: #ff0000;
+	stroke-width: 1px;
+	fill: none;
 }

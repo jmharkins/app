@@ -10,21 +10,14 @@ head
     script(type='text/javascript', src='/javascripts/service.js')
     script(type='text/javascript', src='/javascripts/controller.js')
     link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css")
-    style(type='text/css').
-      .hexagon {
-      stroke: #000;
-      stroke-width: 1px;
-      }
-      .goalcircle {
-      stroke: #ff0000;
-      stroke-width: 1px;
-      fill: none;
-      }
+    link(rel="stylesheet" href="/stylesheets/style.css")
   body(ng-app='stkApp')
     div(class='container')
       div(class='row')
-        a(href='#/player/897')
-          h3 PLAYER
-        a(href='#/team/34')
-          h3 TEAM
-        div(ng-view)
+        div(class='col-md-4')
+          div(class='btn-group')
+            a(href='#/player/897' class='btn btn-default') PLAYER
+            a(href='#/team/34' class='btn btn-default') TEAM
+      div(class='row')
+        div(class='col-md-12')
+          div(ng-view)

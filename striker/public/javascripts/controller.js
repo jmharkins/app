@@ -1,4 +1,6 @@
-stkApp.controller('mainControl', ['$scope', '$routeParams', function ($scope , $routeParams){}])
+stkApp.controller('mainControl', ['$scope', '$routeParams', function ($scope , $routeParams){
+	$scope.teams = ['Arsenal',"Aston Villa", "Chelsea"]
+}])
 
 stkApp.controller('playControl', ['$scope','$routeParams', 'playerShots', function ($scope , $routeParams, playerShots){
 	this.params = $routeParams;
