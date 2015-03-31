@@ -17,3 +17,13 @@ stkApp.factory('teamShots', function ($http) {
 
     }
 });
+
+stkApp.factory('playerList', function ($http) {
+    return function() {
+        return $http({
+            method: 'GET',
+            url: 'api/playerlist',
+            cache: true
+        })
+    }
+})

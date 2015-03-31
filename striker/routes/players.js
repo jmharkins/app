@@ -58,5 +58,29 @@ router.get('/team/:id', function(req, res, next) {
 	});
 });
 
+/* GET team data by ID. */
+router.get('/playerlist', function(req, res, next) {
+  var qid = req.params.id;
+  var dbq = MongoClient.connect("mongodb://localhost:27017/epldb", function(err, db) {
+	if(err) { return next(err); }
+		var gcollect = db.collection('games2');
+		var qresult = gcollect.aggregate([{ $unwind : '$players' }, 
+										{$project: { players: { id: '$players.id',
+						 										team_id: '$players.team_id', 
+						 										fullName : { $concat: [ "$players.firstName", " ", "$players.lastName" ] } 
+						 									} 
+													}
+										},
+										{$group: { _id: {"team_id": '$players.team_id', "player_id": '$players.id', "fullName": "$players.fullName"}}}
+										], function(err, result) { 
+											if(err) {
+												res.send(JSON.stringify(error))
+											} else {
+												res.send(JSON.stringify(result))
+											}
+											db.close();
+										})
+	});
+});
 
 module.exports = router;
