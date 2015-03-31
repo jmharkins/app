@@ -16,6 +16,7 @@ stkApp.config(['$routeProvider', function($routeProvider) {
 		});
 }]);
 
+
 stkApp.directive('shotChart', function(){
 	return { restrict: 'E',
 			 scope: {

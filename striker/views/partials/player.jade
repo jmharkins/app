@@ -1,5 +1,4 @@
 div(ng-controller='playControl' class='row top-buffer')
   div(class='col-md-4')
-    select(class='form-control')
-      option(ng-repeat='p in plist') {{p._id.fullName}}
+    select(class='form-control' ng-options="p._id.fullName for p in plist" ng-model="curPlayer")
   shot-chart(idata='chartData', lgavgs='lgavgs')
