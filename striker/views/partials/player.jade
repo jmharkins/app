@@ -1,3 +1,5 @@
-div
-  h4 {{params.id}}
+div(ng-controller='playControl' class='row top-buffer')
+  div(class='col-md-4')
+    select(class='form-control')
+      option(ng-repeat='p in plist') {{p._id.fullName}}
   shot-chart(idata='chartData', lgavgs='lgavgs')
