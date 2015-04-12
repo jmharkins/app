@@ -1,6 +1,7 @@
 var stkApp = angular.module('stkApp', ['ngRoute'])
 
 stkApp.config(['$routeProvider', function($routeProvider) {
+	// $locationProvider.hashPrefix('');
 	$routeProvider
 		.when('/', {
 			templateUrl: 'partials/main',

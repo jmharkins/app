@@ -1,18 +1,20 @@
 stkApp.controller('mainControl', ['$scope', '$routeParams', function ($scope , $routeParams){}])
 
-stkApp.controller('playControl', ['$scope','$routeParams', 'playerShots', 'playerList', function ($scope , $routeParams, playerShots, playerList){
+stkApp.controller('playControl', ['$scope', '$location', '$routeParams', 'playerShots', 'playerList', function ($scope, $location, $routeParams, playerShots, playerList){
 	this.params = $routeParams;
+	// console.log($location.path())
 	$scope.plist = [];
 	$scope.curPlayer = { };
 	playerList().success(function(data){
+		console.log("listload");
 		$scope.plist = data 
-		$scope.curPlayer = $scope.plist[0]
+		$scope.curPlayer = $scope.plist.filter(function(d) { return d._id.player_id === '897'})[0]
 	})
 	$scope.$watch("curPlayer", function(newValue, oldValue) {
 		if(oldValue._id ) {
 		var url = '/player/' + newValue._id.player_id
-		// console.log($location.path()
 		console.log(newValue, oldValue, url)
+		// $location.path(url)
 		}
 	})
 	$scope.chartData = [];

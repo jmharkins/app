@@ -1,4 +1,6 @@
 div(ng-controller='playControl' class='row top-buffer')
   div(class='col-md-4')
+    a(href='#/player/377') test  
+    a(href='#/player/897') test
     select(class='form-control' ng-options="p._id.fullName for p in plist" ng-model="curPlayer")
   shot-chart(idata='chartData', lgavgs='lgavgs')
