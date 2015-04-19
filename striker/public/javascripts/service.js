@@ -27,3 +27,13 @@ stkApp.factory('playerList', function ($http) {
         })
     }
 })
+
+stkApp.factory('teamList', function ($http) {
+    return function() { 
+        return $http({
+            method: 'GET',
+            url: 'api/teamlist',
+            cache: false
+        })
+    }
+})

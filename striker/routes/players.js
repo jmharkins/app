@@ -60,7 +60,6 @@ router.get('/team/:id', function(req, res, next) {
 
 /* GET team data by ID. */
 router.get('/playerlist', function(req, res, next) {
-  console.log("server req")
   var qid = req.params.id;
   var dbq = MongoClient.connect("mongodb://localhost:27017/epldb", function(err, db) {
 	if(err) { return next(err); }
@@ -81,6 +80,18 @@ router.get('/playerlist', function(req, res, next) {
 											}
 											db.close();
 										})
+	});
+});
+
+router.get('/teamlist', function(req, res, next) {
+  var qid = req.params.id;
+  var dbq = MongoClient.connect("mongodb://localhost:27017/epldb", function(err, db) {
+	if(err) { return next(err); }
+		var gcollect = db.collection('games2');
+		var qresult = gcollect.distinct('team0', function(error, docs) {
+			res.send(JSON.stringify(docs));
+			db.close();
+		})
 	});
 });
 
