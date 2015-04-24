@@ -41,7 +41,7 @@ stkApp.directive('shotChart', function(){
 				.range([padding, w - padding]);   
 				var yScale = d3.scale.linear()
 				 .domain([0,100])
-				 .range([h - padding, padding]);
+				 .range([padding, h - padding]);
 
 				var color = d3.scale.quantile()
 				    .range(colorbrewer.RdYlGn[5].reverse())
