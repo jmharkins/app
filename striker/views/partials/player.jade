@@ -1,4 +1,6 @@
 div(class='row top-buffer')
   div(class='col-md-4')
     select(class='form-control' ng-options="p._id.fullName for p in plist" ng-model="curPlayer")
+  div(class='col-md-2')
+    select(class='form-control' ng-options="s for s in slist" ng-model="curSeason")
   shot-chart(idata='chartData', lgavgs='lgavgs')
